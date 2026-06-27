@@ -143,8 +143,7 @@ setInterval(() => {
 // Booking Wizard Logic
 let currentStep = 1;
 const bookingData = {
-  service: "",
-  servicePrice: 0,
+  services: [],
   specialist: "",
   date: "",
   time: "",
@@ -215,16 +214,22 @@ const step1Next = document.querySelector("#step-1 .next-btn");
 
 serviceOptions.forEach(opt => {
   opt.addEventListener("click", () => {
-    serviceOptions.forEach(o => o.classList.remove("selected"));
-    opt.classList.add("selected");
+    opt.classList.toggle("selected");
     
-    bookingData.service = opt.getAttribute("data-value");
-    bookingData.servicePrice = opt.getAttribute("data-price");
+    // Re-evaluate selected services
+    bookingData.services = [];
+    let totalPrice = 0;
     
-    document.getElementById("summary-service").textContent = bookingData.service;
-    document.getElementById("summary-price").textContent = parseInt(bookingData.servicePrice).toLocaleString() + " د.ع";
+    document.querySelectorAll("#services-options .option-card.selected").forEach(selectedOpt => {
+      bookingData.services.push(selectedOpt.getAttribute("data-value"));
+      totalPrice += parseInt(selectedOpt.getAttribute("data-price"));
+    });
     
-    step1Next.disabled = false;
+    const serviceNames = bookingData.services.length > 0 ? bookingData.services.join(" + ") : "---";
+    document.getElementById("summary-service").textContent = serviceNames;
+    document.getElementById("summary-price").textContent = totalPrice > 0 ? totalPrice.toLocaleString() + " د.ع" : "---";
+    
+    step1Next.disabled = bookingData.services.length === 0;
   });
 });
 
@@ -313,7 +318,7 @@ document.getElementById("submit-booking-btn").addEventListener("click", () => {
 document.getElementById("new-booking-btn").addEventListener("click", () => {
   // Reset Wizard
   currentStep = 1;
-  bookingData.service = "";
+  bookingData.services = [];
   bookingData.specialist = "";
   bookingData.date = "";
   bookingData.time = "";
