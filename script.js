@@ -139,3 +139,209 @@ setInterval(() => {
     }
   });
 }, 4000);
+
+// Booking Wizard Logic
+let currentStep = 1;
+const bookingData = {
+  service: "",
+  servicePrice: 0,
+  specialist: "",
+  date: "",
+  time: "",
+  name: "",
+  phone: "",
+  notes: ""
+};
+
+const steps = document.querySelectorAll(".step");
+const stepLines = document.querySelectorAll(".step-line");
+const wizardSteps = document.querySelectorAll(".wizard-step");
+
+function updateWizardUI() {
+  // Update Stepper
+  steps.forEach((step, idx) => {
+    const stepNum = idx + 1;
+    if (stepNum < currentStep) {
+      step.classList.add("completed");
+      step.classList.remove("active");
+    } else if (stepNum === currentStep) {
+      step.classList.add("active");
+      step.classList.remove("completed");
+    } else {
+      step.classList.remove("active", "completed");
+    }
+  });
+
+  stepLines.forEach((line, idx) => {
+    if (idx + 1 < currentStep) {
+      line.classList.add("active");
+    } else {
+      line.classList.remove("active");
+    }
+  });
+
+  // Show Active Step
+  wizardSteps.forEach(ws => ws.classList.remove("active"));
+  
+  if (currentStep <= 5) {
+    document.getElementById(`step-${currentStep}`).classList.add("active");
+  } else {
+    document.getElementById("step-success").classList.add("active");
+  }
+}
+
+// Next / Prev buttons
+document.querySelectorAll(".next-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentStep < 5) {
+      currentStep++;
+      updateWizardUI();
+    }
+  });
+});
+
+document.querySelectorAll(".prev-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentStep > 1) {
+      currentStep--;
+      updateWizardUI();
+    }
+  });
+});
+
+// Step 1: Services
+const serviceOptions = document.querySelectorAll("#services-options .option-card");
+const step1Next = document.querySelector("#step-1 .next-btn");
+
+serviceOptions.forEach(opt => {
+  opt.addEventListener("click", () => {
+    serviceOptions.forEach(o => o.classList.remove("selected"));
+    opt.classList.add("selected");
+    
+    bookingData.service = opt.getAttribute("data-value");
+    bookingData.servicePrice = opt.getAttribute("data-price");
+    
+    document.getElementById("summary-service").textContent = bookingData.service;
+    document.getElementById("summary-price").textContent = parseInt(bookingData.servicePrice).toLocaleString() + " د.ع";
+    
+    step1Next.disabled = false;
+  });
+});
+
+// Step 2: Specialists
+const specialistOptions = document.querySelectorAll("#specialists-options .option-card");
+const step2Next = document.querySelector("#step-2 .next-btn");
+
+specialistOptions.forEach(opt => {
+  opt.addEventListener("click", () => {
+    specialistOptions.forEach(o => o.classList.remove("selected"));
+    opt.classList.add("selected");
+    
+    bookingData.specialist = opt.getAttribute("data-value");
+    document.getElementById("summary-specialist").textContent = bookingData.specialist;
+    
+    step2Next.disabled = false;
+  });
+});
+
+// Step 3: Date & Time
+const dateOptions = document.querySelectorAll("#date-options .date-card");
+const timeOptions = document.querySelectorAll("#time-options .time-slot");
+const step3Next = document.querySelector("#step-3 .next-btn");
+
+function checkStep3Valid() {
+  if (bookingData.date && bookingData.time) {
+    step3Next.disabled = false;
+  }
+}
+
+dateOptions.forEach(opt => {
+  opt.addEventListener("click", () => {
+    dateOptions.forEach(o => o.classList.remove("selected"));
+    opt.classList.add("selected");
+    bookingData.date = opt.getAttribute("data-value");
+    document.getElementById("summary-date").textContent = bookingData.date;
+    checkStep3Valid();
+  });
+});
+
+timeOptions.forEach(opt => {
+  opt.addEventListener("click", () => {
+    timeOptions.forEach(o => o.classList.remove("selected"));
+    opt.classList.add("selected");
+    bookingData.time = opt.getAttribute("data-value");
+    document.getElementById("summary-time").textContent = bookingData.time;
+    checkStep3Valid();
+  });
+});
+
+// Step 4: Details
+const nameInput = document.getElementById("booking-name");
+const phoneInput = document.getElementById("booking-phone");
+const notesInput = document.getElementById("booking-notes");
+const step4Next = document.querySelector("#step-4 .next-btn");
+
+function checkStep4Valid() {
+  if (nameInput.value.trim() !== "" && phoneInput.value.trim() !== "") {
+    step4Next.disabled = false;
+  } else {
+    step4Next.disabled = true;
+  }
+}
+
+nameInput.addEventListener("input", () => {
+  bookingData.name = nameInput.value.trim();
+  document.getElementById("summary-name").textContent = bookingData.name || "---";
+  checkStep4Valid();
+});
+
+phoneInput.addEventListener("input", () => {
+  bookingData.phone = phoneInput.value.trim();
+  checkStep4Valid();
+});
+
+notesInput.addEventListener("input", () => {
+  bookingData.notes = notesInput.value.trim();
+});
+
+// Step 5: Submit
+document.getElementById("submit-booking-btn").addEventListener("click", () => {
+  currentStep = 6; // Success step
+  updateWizardUI();
+});
+
+document.getElementById("new-booking-btn").addEventListener("click", () => {
+  // Reset Wizard
+  currentStep = 1;
+  bookingData.service = "";
+  bookingData.specialist = "";
+  bookingData.date = "";
+  bookingData.time = "";
+  bookingData.name = "";
+  bookingData.phone = "";
+  bookingData.notes = "";
+  
+  serviceOptions.forEach(o => o.classList.remove("selected"));
+  specialistOptions.forEach(o => o.classList.remove("selected"));
+  dateOptions.forEach(o => o.classList.remove("selected"));
+  timeOptions.forEach(o => o.classList.remove("selected"));
+  
+  nameInput.value = "";
+  phoneInput.value = "";
+  notesInput.value = "";
+  
+  step1Next.disabled = true;
+  step2Next.disabled = true;
+  step3Next.disabled = true;
+  step4Next.disabled = true;
+  
+  document.getElementById("summary-service").textContent = "---";
+  document.getElementById("summary-specialist").textContent = "---";
+  document.getElementById("summary-date").textContent = "---";
+  document.getElementById("summary-time").textContent = "---";
+  document.getElementById("summary-name").textContent = "---";
+  document.getElementById("summary-price").textContent = "---";
+  
+  updateWizardUI();
+});
+

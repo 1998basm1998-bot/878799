@@ -398,8 +398,244 @@ body {
   margin-bottom: 15px;
 }
 
+
 .empty-cart-msg {
   text-align: center;
   color: #888;
   padding: 20px;
+}
+
+/* Booking Wizard */
+.booking-wizard {
+  background: #1e1e1e;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 30px;
+  direction: rtl;
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #333;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.step.active {
+  background: #d4af37;
+  color: #121212;
+}
+
+.step.completed {
+  background: #d4af37;
+  color: #121212;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #333;
+  margin: 0 -10px;
+  z-index: 1;
+  transition: background 0.3s;
+}
+
+.step-line.active {
+  background: #d4af37;
+}
+
+.wizard-step {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.wizard-step.active {
+  display: block;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.option-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2a2a2a;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option-card.selected {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.option-info h4 {
+  color: #eee;
+  margin: 0 0 5px 0;
+}
+
+.option-info span {
+  color: #888;
+  font-size: 0.85em;
+}
+
+.option-price {
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.horizontal-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+.horizontal-scroll::-webkit-scrollbar { display: none; }
+
+.date-card {
+  flex: 0 0 auto;
+  background: #2a2a2a;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 80px;
+}
+
+.date-card.selected {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.date-card span {
+  display: block;
+  font-size: 0.8em;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.date-card strong {
+  display: block;
+  font-size: 1.2em;
+  color: #eee;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.time-slot {
+  background: #2a2a2a;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  color: #eee;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.time-slot.selected {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.wizard-actions button {
+  flex: 1;
+}
+
+.wizard-actions .prev-btn {
+  background: #333;
+  color: #eee;
+}
+
+.wizard-actions .prev-btn:hover {
+  background: #444;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  color: #eee;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.form-input {
+  width: 100%;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  color: #eee;
+  padding: 12px;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #d4af37;
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.booking-summary {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #eee;
+}
+
+.summary-row:last-child {
+  margin-bottom: 0;
+}
+
+.summary-row span:first-child {
+  color: #888;
 }
