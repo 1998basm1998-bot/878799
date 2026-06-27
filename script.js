@@ -313,6 +313,23 @@ notesInput.addEventListener("input", () => {
 document.getElementById("submit-booking-btn").addEventListener("click", () => {
   currentStep = 6; // Success step
   updateWizardUI();
+  
+  const serviceNames = bookingData.services.join(" + ");
+  const message = `مرحباً، أود تأكيد حجزي:
+الخدمة: ${serviceNames}
+المتخصصة: ${bookingData.specialist}
+التاريخ: ${bookingData.date}
+الوقت: ${bookingData.time}
+الاسم: ${bookingData.name}
+الرقم: ${bookingData.phone}
+${bookingData.notes ? `ملاحظات: ${bookingData.notes}` : ''}
+`;
+  
+  const whatsappUrl = `https://wa.me/9647762209987?text=${encodeURIComponent(message)}`;
+  const whatsappLink = document.getElementById("whatsapp-confirm-link");
+  if (whatsappLink) {
+    whatsappLink.href = whatsappUrl;
+  }
 });
 
 document.getElementById("new-booking-btn").addEventListener("click", () => {
