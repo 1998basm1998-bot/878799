@@ -45,6 +45,25 @@ body {
   transform: scale(1.05);
 }
 
+.header-search-btn {
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header-search-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+  transform: scale(1.05);
+}
+
 .logo {
   width: 70px;
   height: 70px;
