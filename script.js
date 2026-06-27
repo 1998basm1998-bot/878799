@@ -101,12 +101,92 @@ addToCartBtns.forEach((btn) => {
   });
 });
 
+let pendingOrder = null;
 const checkoutBtn = document.querySelector(".checkout-btn");
+const pendingOrderContainer = document.getElementById("pending-order-container");
+const currentCartContainer = document.getElementById("current-cart-container");
+const pendingOrderItems = document.getElementById("pending-order-items");
+const skipPendingBtn = document.getElementById("skip-pending-btn");
+
+function showPendingOrder() {
+  if (pendingOrder && pendingOrder.length > 0) {
+    pendingOrderContainer.style.display = "block";
+    currentCartContainer.style.display = "none";
+    
+    let itemsHtml = "";
+    let total = 0;
+    pendingOrder.forEach(item => {
+      itemsHtml += `<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #444; padding: 10px 0;">
+        <span>${item.name}</span>
+        <span style="color: #d4af37;">${parseInt(item.price).toLocaleString()} د.ع</span>
+      </div>`;
+      total += parseInt(item.price);
+    });
+    itemsHtml += `<div style="display: flex; justify-content: space-between; padding-top: 10px; font-weight: bold; margin-top: 5px;">
+      <span>الإجمالي:</span>
+      <span style="color: #d4af37;">${total.toLocaleString()} د.ع</span>
+    </div>`;
+    
+    pendingOrderItems.innerHTML = itemsHtml;
+  } else {
+    pendingOrderContainer.style.display = "none";
+    currentCartContainer.style.display = "block";
+  }
+}
+
 if (checkoutBtn) {
   checkoutBtn.addEventListener("click", () => {
+    if (cart.length === 0) return;
     showToast("تم إرسال الطلب بنجاح");
+    pendingOrder = [...cart];
     cart = [];
     updateCartUI();
+    showPendingOrder();
+  });
+}
+
+if (skipPendingBtn) {
+  skipPendingBtn.addEventListener("click", () => {
+    pendingOrder = null;
+    showPendingOrder();
+  });
+}
+
+// Work Modal Logic
+const workModal = document.getElementById("work-modal");
+const closeWorkModalBtn = document.getElementById("close-work-modal");
+const workModalImg = document.getElementById("work-modal-img");
+const workModalTitle = document.getElementById("work-modal-title");
+const workModalPrice = document.getElementById("work-modal-price");
+const workModalDesc = document.getElementById("work-modal-desc");
+
+document.querySelectorAll('.work-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const title = item.getAttribute('data-title');
+    const price = item.getAttribute('data-price');
+    const img = item.getAttribute('data-img');
+    const desc = item.getAttribute('data-desc');
+
+    workModalTitle.textContent = title;
+    workModalPrice.textContent = price;
+    workModalImg.src = img;
+    workModalDesc.textContent = desc;
+
+    workModal.style.display = 'flex';
+  });
+});
+
+if (closeWorkModalBtn) {
+  closeWorkModalBtn.addEventListener('click', () => {
+    workModal.style.display = 'none';
+  });
+}
+
+if (workModal) {
+  window.addEventListener('click', (e) => {
+    if (e.target === workModal) {
+      workModal.style.display = 'none';
+    }
   });
 }
 

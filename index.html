@@ -53,7 +53,7 @@
       <section id="home-section" class="page-section active">
         <h2 class="section-title">أحدث أعمالنا</h2>
         <div class="gallery">
-          <div class="gallery-item">
+          <div class="gallery-item work-item" data-title="تسريحة شعر سهرة" data-price="50,000 د.ع" data-img="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=400&h=400" data-desc="تسريحة شعر مميزة تناسب جميع المناسبات والسهرات، يتم تنفيذها بأحدث الطرق والمنتجات العالمية لضمان ثباتها طوال فترة المناسبة." style="cursor: pointer;">
             <img
               src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=400&h=400"
               alt="تسريحة شعر"
@@ -63,7 +63,7 @@
               <span class="price">50,000 د.ع</span>
             </div>
           </div>
-          <div class="gallery-item">
+          <div class="gallery-item work-item" data-title="مكياج احترافي" data-price="75,000 د.ع" data-img="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400&h=400" data-desc="مكياج سينمائي واحترافي يبرز جمالك الطبيعي، باستخدام أفضل ماركات المكياج العالمية التي تحافظ على نضارة بشرتك وتدوم طويلاً." style="cursor: pointer;">
             <img
               src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400&h=400"
               alt="مكياج"
@@ -73,6 +73,9 @@
               <span class="price">75,000 د.ع</span>
             </div>
           </div>
+        </div>
+        <div style="text-align: center; margin-top: 15px; margin-bottom: 30px;">
+          <button class="action-btn nav-item" data-target="all-works-section" style="width: auto; padding: 10px 30px; font-size: 1em;">المزيد</button>
         </div>
 
         <h2 class="section-title" id="products-title">المنتجات المميزة</h2>
@@ -119,14 +122,88 @@
         </div>
       </section>
 
+      <section id="all-works-section" class="page-section">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <h2 class="section-title" style="margin-bottom: 0;">كل الأعمال</h2>
+          <button class="nav-item" data-target="home-section" style="background: transparent; border: none; color: #d4af37; font-size: 1em; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+            رجوع
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="gallery" style="margin-bottom: 30px;">
+          <div class="gallery-item work-item" data-title="تسريحة شعر سهرة" data-price="50,000 د.ع" data-img="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=400&h=400" data-desc="تسريحة شعر مميزة تناسب جميع المناسبات والسهرات، يتم تنفيذها بأحدث الطرق والمنتجات العالمية لضمان ثباتها طوال فترة المناسبة." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=400&h=400" alt="تسريحة شعر" />
+            <div class="item-details">
+              <h3>تسريحة شعر سهرة</h3>
+              <span class="price">50,000 د.ع</span>
+            </div>
+          </div>
+          <div class="gallery-item work-item" data-title="مكياج احترافي" data-price="75,000 د.ع" data-img="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400&h=400" data-desc="مكياج سينمائي واحترافي يبرز جمالك الطبيعي، باستخدام أفضل ماركات المكياج العالمية التي تحافظ على نضارة بشرتك وتدوم طويلاً." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400&h=400" alt="مكياج" />
+            <div class="item-details">
+              <h3>مكياج احترافي</h3>
+              <span class="price">75,000 د.ع</span>
+            </div>
+          </div>
+          <div class="gallery-item work-item" data-title="تسريحة زفاف" data-price="150,000 د.ع" data-img="https://images.unsplash.com/photo-1516975080661-46b0d5c07b62?auto=format&fit=crop&q=80&w=400&h=400" data-desc="تسريحة زفاف ملكية متكاملة تليق بيومك الخاص. نعتني بأدق التفاصيل لتظهري بأجمل طلة في يوم العمر مع ضمان ثبات التسريحة طوال الحفل." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1516975080661-46b0d5c07b62?auto=format&fit=crop&q=80&w=400&h=400" alt="تسريحة زفاف" />
+            <div class="item-details">
+              <h3>تسريحة زفاف</h3>
+              <span class="price">150,000 د.ع</span>
+            </div>
+          </div>
+          <div class="gallery-item work-item" data-title="مكياج سينمائي" data-price="120,000 د.ع" data-img="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&q=80&w=400&h=400" data-desc="مكياج احترافي خاص للمناسبات الكبيرة والتصوير الفوتوغرافي، يتميز بالتغطية العالية وإبراز الملامح بطريقة فنية جذابة." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&q=80&w=400&h=400" alt="مكياج سينمائي" />
+            <div class="item-details">
+              <h3>مكياج سينمائي</h3>
+              <span class="price">120,000 د.ع</span>
+            </div>
+          </div>
+          <div class="gallery-item work-item" data-title="جلسة عناية بالبشرة" data-price="60,000 د.ع" data-img="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&q=80&w=400&h=400" data-desc="جلسة تنظيف عميق للبشرة باستخدام أفضل الماسكات والمقشرات العالمية، لإزالة الخلايا الميتة وتفتيح البشرة وإعادة النضارة والإشراق لوجهك." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&q=80&w=400&h=400" alt="عناية بالبشرة" />
+            <div class="item-details">
+              <h3>جلسة عناية بالبشرة</h3>
+              <span class="price">60,000 د.ع</span>
+            </div>
+          </div>
+          <div class="gallery-item work-item" data-title="صبغة شعر كاملة" data-price="85,000 د.ع" data-img="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&q=80&w=400&h=400" data-desc="تغيير لون الشعر بالكامل باستخدام صبغات خالية من الأمونيا تحافظ على صحة شعرك وتمنحه لوناً غنياً ولمعاناً فائقاً." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&q=80&w=400&h=400" alt="صبغة شعر" />
+            <div class="item-details">
+              <h3>صبغة شعر كاملة</h3>
+              <span class="price">85,000 د.ع</span>
+            </div>
+          </div>
+          <div class="gallery-item work-item" data-title="تركيب وتزيين الأظافر" data-price="35,000 د.ع" data-img="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&q=80&w=400&h=400" data-desc="خدمة متكاملة لتركيب الأظافر بأشكال وأطوال مختلفة، مع تزيينها بأحدث الألوان والرسومات التي تناسب ذوقك وتدوم طويلاً." style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&q=80&w=400&h=400" alt="تركيب أظافر" />
+            <div class="item-details">
+              <h3>تركيب وتزيين الأظافر</h3>
+              <span class="price">35,000 د.ع</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="cart-section" class="page-section">
         <h2 class="section-title">سلة المشتريات</h2>
-        <div id="cart-items" class="cart-items-container">
-          <p class="empty-cart-msg">السلة فارغة حالياً</p>
+        
+        <div id="pending-order-container" style="display: none; background: #1e1e1e; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 20px;">
+          <h3 style="color: #d4af37; margin-bottom: 10px;">طلب قيد المراجعة</h3>
+          <p style="color: #888; margin-bottom: 15px;">لقد قمت بإرسال طلب مسبقاً، وهو قيد المراجعة حالياً.</p>
+          <div id="pending-order-items" style="margin-bottom: 20px; text-align: right; background: #2a2a2a; border-radius: 10px; padding: 15px;"></div>
+          <button id="skip-pending-btn" class="action-btn" style="background: transparent; border: 1px solid #d4af37; color: #d4af37;">تخطي لدي طلب جديد</button>
         </div>
-        <div class="cart-total" style="display: none;">
-          <h3>الإجمالي: <span id="cart-total-price">0</span> د.ع</h3>
-          <button class="action-btn checkout-btn">إتمام الطلب</button>
+
+        <div id="current-cart-container">
+          <div id="cart-items" class="cart-items-container">
+            <p class="empty-cart-msg">السلة فارغة حالياً</p>
+          </div>
+          <div class="cart-total" style="display: none;">
+            <h3>الإجمالي: <span id="cart-total-price">0</span> د.ع</h3>
+            <button class="action-btn checkout-btn">إتمام الطلب</button>
+          </div>
         </div>
       </section>
 
@@ -389,6 +466,27 @@
         <span>الحجوزات</span>
       </a>
     </nav>
+
+    <!-- Work Details Modal -->
+    <div id="work-modal" class="modal">
+      <div class="modal-content" style="padding: 20px; position: relative;">
+        <button class="close-modal" id="close-work-modal" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div style="margin-bottom: 15px; padding-top: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 id="work-modal-title" style="margin: 0; font-size: 1.5em; padding-right: 30px;"></h3>
+            <span id="work-modal-price" class="price" style="font-size: 1.2em; margin: 0; color: #d4af37;"></span>
+          </div>
+          <p id="work-modal-desc" style="color: #aaa; line-height: 1.6; margin-bottom: 15px;"></p>
+        </div>
+        <img id="work-modal-img" src="" alt="Work Image" style="width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 10px; display: block;" />
+      </div>
+    </div>
+
     <div id="toast" class="toast">قريباً...</div>
     <script src="./script.js"></script>
   </body>
