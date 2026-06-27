@@ -367,3 +367,41 @@ document.getElementById("new-booking-btn").addEventListener("click", () => {
   updateWizardUI();
 });
 
+// Product Search Logic
+const searchBtn = document.getElementById("search-btn");
+const searchContainer = document.getElementById("search-container");
+const searchInput = document.getElementById("product-search");
+const productCards = document.querySelectorAll(".products .product-card");
+
+searchBtn.addEventListener("click", () => {
+  // Navigate to home section if not already there
+  const homeTab = document.querySelector('.nav-item[data-target="home-section"]');
+  if (homeTab && !homeTab.classList.contains('active')) {
+    homeTab.click();
+  }
+
+  // Toggle search container
+  if (searchContainer.style.display === "none") {
+    searchContainer.style.display = "block";
+    searchInput.focus();
+  } else {
+    searchContainer.style.display = "none";
+    searchInput.value = "";
+    // Reset search
+    searchInput.dispatchEvent(new Event("input"));
+  }
+});
+
+searchInput.addEventListener("input", (e) => {
+  const searchTerm = e.target.value.trim().toLowerCase();
+  
+  productCards.forEach(card => {
+    const title = card.querySelector("h4").textContent.toLowerCase();
+    // Filter product from the first letter
+    if (title.startsWith(searchTerm)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});

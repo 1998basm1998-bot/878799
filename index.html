@@ -19,7 +19,7 @@
           </svg>
         </a>
         <img src="https://d.top4top.io/s_38306ydrl1.jpg" alt="شعار مواعيدي" class="logo" />
-        <button class="header-search-btn" aria-label="بحث عن منتجات" onclick="showToast('سيتم إضافة خاصية البحث قريباً')">
+        <button class="header-search-btn" aria-label="بحث عن منتجات" id="search-btn">
           <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -75,7 +75,10 @@
           </div>
         </div>
 
-        <h2 class="section-title">المنتجات المميزة</h2>
+        <h2 class="section-title" id="products-title">المنتجات المميزة</h2>
+        <div id="search-container" style="display: none; padding: 0 10px 20px;">
+          <input type="text" id="product-search" class="form-input" placeholder="ابحث عن منتج..." style="width: 100%; border-radius: 20px; padding: 12px 20px; border: 1px solid rgba(212, 175, 55, 0.5);" />
+        </div>
         <div class="products">
           <div class="product-card">
             <img
