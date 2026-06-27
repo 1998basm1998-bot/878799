@@ -1,6 +1,0 @@
-{
-  "name": "3D Interface",
-  "description": "A beautiful 3D interface built with HTML, CSS, and JS.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
