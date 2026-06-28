@@ -485,3 +485,5 @@ searchInput.addEventListener("input", (e) => {
     }
   });
 });
+
+// End of script
