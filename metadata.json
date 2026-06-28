@@ -1,6 +1,6 @@
 {
-  "name": "3D Interface",
-  "description": "A beautiful 3D interface built with HTML, CSS, and JS.",
+  "name": "مواعيدي",
+  "description": "تطبيق حجز المواعيد",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
